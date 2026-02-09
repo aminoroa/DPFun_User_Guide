@@ -1,0 +1,22 @@
+#!/bin/bash -l
+#SBATCH --job-name=interproscan
+#SBATCH --time=4:00:00
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=64G
+#SBATCH --gres=gpu:1
+#SBATC H --partition=gpu   # (uncomment if your cluster requires a GPU partition)
+
+set -euo pipefail
+
+cd /mnt/home/aminoroa/DPFunc
+
+module purge
+module load Miniforge3
+module load CUDA/12.6.0
+conda activate py38dgl
+
+mkdir -p ./results
+
+python DPFunc_pred.py -d mf -n 0 -p DPFunc_model
+python DPFunc_pred.py -d bp -n 0 -p DPFunc_model
+python DPFunc_pred.py -d cc -n 0 -p DPFunc_model
