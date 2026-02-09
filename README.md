@@ -202,7 +202,9 @@ sbatch Run_DPFunc
 DPFunc_model_mf_final.pkl, DPFunc_model_bp_final.pkl, and DPFunc_model_cc_final.pkl in the ~/DPFunc/results directory contains the resutls. Run the codes below to print the results in a human readable format:
 
 run mf_print.py
+
 run bp_print.py
+
 run cc_print.py
 
 
